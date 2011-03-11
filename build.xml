@@ -1,0 +1,57 @@
+<!DOCTYPE project>
+
+<project name="TouCAN" default="jar" basedir=".">
+
+	<property file="build.properties"/>
+	<property name="build" value="build"/>
+	<property name="src" value="src"/>
+	<property name="dist.dir" value="dist" />
+
+    <property name="pname" value="TouCAN"/>
+    <property name="writeup" value="TouCAN_HW5.pdf"/>
+
+
+	<target name="prepare" >
+		<mkdir dir="${build}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="clean" >
+		<delete dir="${build}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="compile" depends="clean,prepare">
+		<echo message="Compiling service implementation"/>
+
+				<javac srcdir="${src}" destdir="${build}" deprecation="true" failonerror="true" debug="true">
+				</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="dist/${pname}.jar" >
+			<fileset dir="${build}" />
+		</jar>
+	</target>
+
+    <target name="dist" depends="prepare">
+		<zip destfile="dist/${pname}.zip" >
+			<zipfileset dir="${src}" prefix="${pname}/src/"/>
+			<zipfileset dir="docs" prefix="${pname}/docs/"/>
+            <zipfileset file="build.xml" prefix="${pname}"/>
+            <zipfileset file="${writeup}" prefix="${pname}"/>
+            <zipfileset file="README" prefix="${pname}"/>
+                
+		</zip>
+	</target>
+
+    <target name="run-test" depends="compile">
+        <java fork="true" failonerror="no" classname="Test" classpath="build">  
+            <arg line=""/>
+        </java>
+    </target>
+
+
+    <target name="run" depends="run-test"/>
+
+</project>
