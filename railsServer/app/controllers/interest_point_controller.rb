@@ -1,0 +1,2 @@
+class InterestPointController < ApplicationController
+end

@@ -1,0 +1,8 @@
+<h1>Add new layer</h1>
+<%= form_tag :action => 'create' %>
+<p><label for="layer_title">name</label>:
+<%= text_field 'layer', 'name' %></p>
+<%= submit_tag "Create" %>
+<%= form_tag %>
+<%= link_to 'Back', {:action => 'list'} %>
+

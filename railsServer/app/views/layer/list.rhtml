@@ -1,0 +1,13 @@
+<% if @layers.blank? %>
+<p>There are not any layers currently in the system.</p>
+<% else %>
+<p>These are the current layers in our system</p>
+<ul id="layers">
+<% @layers.each do |c| %>
+<li><%= link_to c.name, {:action => 'show', :id => c.id} -%></li>
+<% end %>
+</ul>
+<% end %>
+<p><%= link_to "Add new Layer", {:action => 'new' }%></p>
+
+
