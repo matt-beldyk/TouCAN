@@ -1,0 +1,17 @@
+<h1>Add new interest_point</h1>
+<%= form_tag :action => 'create' %>
+<p><label for="interest_point_title">name</label>:
+<%= text_field 'interest_point', 'name' %></p>
+
+<p><label for="interest_point_title">Latitude</label>:
+<%= text_field 'interest_point', 'lat' %></p>
+
+<p><label for="interest_point_title">Longitude</label>:
+<%= text_field 'interest_point', 'lon' %></p>
+
+<p><label for="interest_point_title">Description</label>:
+<%= text_field 'interest_point', 'words' %></p>
+<%= submit_tag "Create" %>
+<%= form_tag %>
+<%= link_to 'Back', {:action => 'list'} %>
+

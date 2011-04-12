@@ -1,0 +1,9 @@
+<h1><%= @interest_point.name %></h1>
+<strong>Created Date:</strong> <%= @interest_point.created_at %><br />
+<strong>Latitude:</strong> <%= @interest_point.lat %><br />
+<strong>Longitude:</strong> <%= @interest_point.lon %><br />
+<strong>Description:</strong> <%= @interest_point.words %><br />
+</p>
+<hr />
+<%= link_to 'Back', {:action => 'list'} %>
+
