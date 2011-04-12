@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 3) do
     t.float    "lon"
     t.text     "words"
     t.text     "picture"
+    t.integer  "layer_id"
   end
 
   create_table "layers", :force => true do |t|
