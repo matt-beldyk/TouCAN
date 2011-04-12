@@ -3,6 +3,6 @@ class InterestPoint < ActiveRecord::Base
 
  validates_presence_of :words
  validates_presence_of :picture
- validates_numericality_of :latitude
- validates_numericality_of :longitude
+ validates_numericality_of :lat
+ validates_numericality_of :lon
 end
