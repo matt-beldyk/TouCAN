@@ -11,6 +11,11 @@
 
 <p><label for="interest_point_title">Description</label>:
 <%= text_field 'interest_point', 'words' %></p>
+
+<p><label for="interest_point_title">Picture (FIXME)</label>:
+<%= text_field 'interest_point', 'picture' %></p>
+
+
 <%= submit_tag "Create" %>
 <%= form_tag %>
 <%= link_to 'Back', {:action => 'list'} %>
