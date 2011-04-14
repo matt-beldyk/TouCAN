@@ -1,7 +1,13 @@
 class LayerController < ApplicationController
    def list
     @layers = Layer.find(:all)
-   end
+
+
+        respond_to do |format|
+            format.html #index.html.erb
+            format.xml {render :xml => @layers}
+        end
+    end
 
    def show
     @layer = Layer.find(params[:id])
