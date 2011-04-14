@@ -1,6 +1,13 @@
 class InterestPointController < ApplicationController
+
+
    def list
     @interest_points = InterestPoint.find(:all)
+
+    respond_to do |format|
+        format.html #index.html.erb
+        format.xml {render :xml => @interest_points}
+     end
    end
 
    def json 
