@@ -3,6 +3,10 @@ class InterestPointController < ApplicationController
     @interest_points = InterestPoint.find(:all)
    end
 
+   def json 
+    @interest_points = InterestPoint.find(:all)
+   end
+
    def show
     @interest_point = InterestPoint.find(params[:id])
    end
