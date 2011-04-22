@@ -2,10 +2,22 @@ package toucan.app.datamodel;
 
 
 public class Rest2LayerAdaptor extends toucan.app.datamodel.AbstractLayer {
+	
+	private String server;
+	private Integer port;
+	
 	/**
 	 * TODO fill in logic to pull in the results from the Rails server
 	 * as a layer.  Maybe have a function w/ that logic or put it in the 
 	 * constructor.
 	 */
+	
+	
+	public Rest2LayerAdaptor(String server, Integer port){
+		this.server = server;
+		this.port = port;
+		
+	}
+
 
 }
