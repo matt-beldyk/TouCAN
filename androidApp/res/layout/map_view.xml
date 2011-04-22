@@ -4,8 +4,22 @@
 	android:orientation="vertical" android:id="@+id/map_layout">
 
 
+
+<!--  
+
+this mapkey is based on my debug key, your's will be different
+see  http://code.google.com/android/add-ons/google-apis/mapkey.html 
+
+[22:40:35]            beldyk@lust: ~/.android 
+$ keytool -list -alias androiddebugkey -keystore ./debug.keystore -storepass android -keypass android
+androiddebugkey, Feb 27, 2011, PrivateKeyEntry, 
+Certificate fingerprint (MD5): ***** REMOVED ****************
+
+copy that api signature to http://code.google.com/android/maps-api-signup.html
+
+-->
 	<com.google.android.maps.MapView
-		android:id="@+id/ip_map" android:apiKey="0OIX9BMglIQw2o9JoLtq6gWrnBPNELi-o0YeYiw"
+		android:id="@+id/ip_map" android:apiKey="0OIX9BMglIQxyD5OfN1huEcWsPtk_7nL4F5KvdQ"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:clickable="true" />
 		

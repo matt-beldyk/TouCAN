@@ -54,5 +54,6 @@ public class IPMapFoo extends MapActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map_view);
 		this.initMap();
+		this.initMyLocation();
 	}
 }
