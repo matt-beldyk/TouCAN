@@ -1,5 +1,7 @@
 package toucan.app.datamodel;
 
+import android.util.Log;
+
 public class InterestPoint {
 	private String photoUrl;
 	private Double lat;
@@ -15,6 +17,7 @@ public class InterestPoint {
 		this.lat = double1;
 		this.lon = double2;
 		this.description = description;
+		Log.d("", "Created Point at "+lat+", "+lon);
 	}
 	
 	public String getPhotoUrl() {
