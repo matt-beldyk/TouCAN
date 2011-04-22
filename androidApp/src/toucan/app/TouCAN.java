@@ -1,5 +1,7 @@
 package toucan.app;
 
+import com.google.android.maps.MapActivity;
+
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -9,5 +11,7 @@ public class TouCAN extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.server_picker);
+        
     }
+
 }
