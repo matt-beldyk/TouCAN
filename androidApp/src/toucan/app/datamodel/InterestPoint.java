@@ -2,18 +2,18 @@ package toucan.app.datamodel;
 
 public class InterestPoint {
 	private String photoUrl;
-	private Float lat;
+	private Double lat;
 	
-	private Float lon;
+	private Double lon;
 	private String description;
 	
 	
-	public InterestPoint(String photoUrl, Float lat, Float lon,
+	public InterestPoint(String photoUrl, Double double1, Double double2,
 			String description) {
 		super();
 		this.photoUrl = photoUrl;
-		this.lat = lat;
-		this.lon = lon;
+		this.lat = double1;
+		this.lon = double2;
 		this.description = description;
 	}
 	
@@ -23,16 +23,16 @@ public class InterestPoint {
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
 	}
-	public Float getLat() {
+	public Double getLat() {
 		return lat;
 	}
-	public void setLat(Float lat) {
+	public void setLat(Double lat) {
 		this.lat = lat;
 	}
-	public Float getLon() {
+	public Double getLon() {
 		return lon;
 	}
-	public void setLon(Float lon) {
+	public void setLon(Double lon) {
 		this.lon = lon;
 	}
 	public String getDescription() {
