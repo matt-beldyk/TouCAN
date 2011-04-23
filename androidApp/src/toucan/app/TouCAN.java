@@ -3,10 +3,12 @@ package toucan.app;
 import toucan.app.datamodel.AbstractLayer;
 import toucan.app.datamodel.RandomLayer;
 import toucan.app.datamodel.Rest2LayerAdaptor;
+import toucan.app.map.IPMapFoo;
 
 import com.google.android.maps.MapActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View.OnClickListener;
@@ -47,10 +49,16 @@ public class TouCAN extends MapActivity {
 			OnClickListener restClickListener = new OnClickListener(){
 				public void onClick(View v) {
 					Log.i("", "Rest Points Button clicked");
-					String servInfo = ((EditText)findViewById(R.id.serv_addr_text)).getText().toString();
-					String[] tmp = servInfo.split(":");
-					iPoints = new Rest2LayerAdaptor(tmp[0], new Integer(tmp[1]));
-					setContentView(R.layout.map_view);
+					String servAddr = ((EditText)findViewById(R.id.serv_addr_text)).getText().toString();
+					String servPort = ((EditText)findViewById(R.id.serv_port_text)).getText().toString();
+					
+					iPoints = new Rest2LayerAdaptor(servAddr, new Integer(servPort));
+					
+					
+					Intent myIntent = new Intent(v.getContext(), IPMapFoo.class);
+	                startActivityForResult(myIntent, 0);
+
+				//	setContentView(R.layout.map_view);
 				}
 
 			};
@@ -64,6 +72,6 @@ public class TouCAN extends MapActivity {
 	@Override
 	protected boolean isRouteDisplayed() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }

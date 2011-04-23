@@ -3,6 +3,7 @@ package toucan.app.map;
 import toucan.app.R;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -41,6 +42,7 @@ public class IPMapFoo extends MapActivity {
         //overlay.enableCompass(); // does not work in emulator
         overlay.runOnFirstFix(new Runnable() {
            public void run() {
+        	   Log.d("", "First Location Found ");
               // Zoom in to current location
               controller.setZoom(16);
               controller.animateTo(overlay.getMyLocation());

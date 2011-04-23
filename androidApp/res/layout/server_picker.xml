@@ -3,20 +3,37 @@
 	android:layout_width="match_parent" android:layout_height="match_parent"
 	android:orientation="vertical">
 
-	<EditText android:text="Enter Server Address:port" android:id="@+id/serv_addr_text"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:layout_gravity="center"></EditText>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent" android:layout_height="100dip"
+	
+		android:orientation="horizontal">
 
-	<Button android:text="Load Layer" android:id="@+id/load_points_button"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:layout_gravity="center"></Button>
+		<EditText android:text="Server Address" android:id="@+id/serv_addr_text"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_gravity="center"></EditText>
 
-	<TextView android:text="Please enter the server and port and we can load a layer"
-		android:id="@+id/textView1" android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:layout_gravity="center"></TextView>
-		
-	<Button android:text="Load Random Points" android:id="@+id/rand_points_button"
-		android:layout_width="wrap_content" android:layout_gravity="center"
-		android:layout_height="wrap_content"></Button>
+		<EditText android:text="Server Port" android:id="@+id/serv_port_text"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_gravity="center"></EditText>
 
+	</LinearLayout>
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="match_parent" android:layout_height="200dip"
+	
+		android:orientation="vertical">
+
+		<Button android:text="Load Layer" android:id="@+id/load_points_button"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_gravity="center"></Button>
+
+		<TextView android:text="Please enter the server and port and we can load a layer"
+			android:id="@+id/textView1" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_gravity="center"></TextView>
+
+		<Button android:text="Load Random Points" android:id="@+id/rand_points_button"
+			android:layout_width="wrap_content" android:layout_gravity="center"
+			android:layout_height="wrap_content"></Button>
+
+	</LinearLayout>
 </LinearLayout>
