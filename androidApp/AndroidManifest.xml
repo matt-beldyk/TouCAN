@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-          <activity android:name=".map.IPMapFoo" /> 
+        <!--   <activity android:name=".map.IPMapFoo" /> -->
       	<uses-library android:name="com.google.android.maps" />
 
     </application>

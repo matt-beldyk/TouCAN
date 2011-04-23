@@ -67,7 +67,7 @@ public class IPMapFoo{
         mapV.getOverlays().add(overlay);
      }
 	/** Called with the activity is first created. */
-	public void onCreate(Bundle savedInstanceState) {
+	public void init() {
 	//	super.onCreate(savedInstanceState);
 	//	setContentView(R.layout.map_view);
 		this.initMap();

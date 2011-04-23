@@ -6,6 +6,7 @@ import toucan.app.datamodel.Rest2LayerAdaptor;
 import toucan.app.map.IPMapFoo;
 
 import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,10 +21,12 @@ public class TouCAN extends MapActivity {
 
 	private AbstractLayer iPoints;
 	private IPMapFoo ipMapFoo;
+	private MapView mv;
 	
 	public TouCAN(){
 		super();
 		ipMapFoo = new IPMapFoo();
+		ipMapFoo.setLauncher(this);
 	}
 	
 	/** Called when the activity is first created. */
@@ -32,12 +35,27 @@ public class TouCAN extends MapActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.server_picker);
 		setUpListeners();
+		Log.d("", "in TouCAN.onCreate");
+
 
 	}
 	
 	protected void launchNavigationView(View currentContext){
-		Intent myIntent = new Intent(currentContext.getContext(), IPMapFoo.class);
-        startActivityForResult(myIntent, 0);
+	//	Intent myIntent = new Intent(currentContext.getContext(), IPMapFoo.class);
+      //  startActivityForResult(myIntent, 0);
+		
+		//This needs to be before the call to findViewById
+		//  Basically Activity keeps track of the current layout
+		// and only looks for views and such within that layout
+		//  I suppose it avoids namespace colisions
+		// and the various views aren't in the global namespace
+		setContentView(R.layout.map_view);
+
+		mv = (MapView)findViewById(R.id.ip_map);
+		Log.d("", "mv:"+mv+"  R.id.ip_map:"+R.id.ip_map);
+		ipMapFoo.setMapView(mv);
+		ipMapFoo.init();
+		
 	}
 
 	public void setUpListeners(){
