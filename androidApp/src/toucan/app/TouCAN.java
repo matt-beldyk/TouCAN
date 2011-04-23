@@ -18,7 +18,14 @@ import android.widget.EditText;
 
 public class TouCAN extends MapActivity {
 
-	AbstractLayer iPoints;
+	private AbstractLayer iPoints;
+	private IPMapFoo ipMapFoo;
+	
+	public TouCAN(){
+		super();
+		ipMapFoo = new IPMapFoo();
+	}
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

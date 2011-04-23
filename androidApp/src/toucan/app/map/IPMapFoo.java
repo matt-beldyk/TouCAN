@@ -13,17 +13,15 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 
 
-public class IPMapFoo extends MapActivity {
+public class IPMapFoo{
 
 	private MapView mapV;
 	private MapController controller;
 	
 	private AbstractLayer points;
 
-	@Override
-	protected boolean isRouteDisplayed() {
-		return true;
-	}
+
+	private MapActivity launcher;
 	
 	public IPMapFoo(AbstractLayer layer){
 		super();
@@ -36,19 +34,26 @@ public class IPMapFoo extends MapActivity {
 		this.points = new EmptyLayer();
 	}
 	
+	public void setLauncher(MapActivity ma){
+		this.launcher = ma;
+	}
+	
+	public void setMapView(MapView mv){
+		this.mapV = mv;
+	}
+	
 	protected void initMap(){
-		this.mapV = (MapView) findViewById(R.id.ip_map);
 		controller = this.mapV.getController();
 		mapV.setSatellite(true);
 		mapV.setBuiltInZoomControls(true);
 
 		//show things on the map
-		Drawable monMark = getResources().getDrawable(R.drawable.icon);
+		Drawable monMark = this.launcher.getResources().getDrawable(R.drawable.icon);
 		monMark.setBounds(0,0,monMark.getIntrinsicWidth(),monMark.getIntrinsicHeight());
 	}
 	
     private void initMyLocation() {
-        final MyLocationOverlay overlay = new MyLocationOverlay(this, mapV);
+        final MyLocationOverlay overlay = new MyLocationOverlay(this.launcher, mapV);
         overlay.enableMyLocation(); 
         //overlay.enableCompass(); // does not work in emulator
         overlay.runOnFirstFix(new Runnable() {
@@ -62,11 +67,11 @@ public class IPMapFoo extends MapActivity {
         mapV.getOverlays().add(overlay);
      }
 	/** Called with the activity is first created. */
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.map_view);
+	//	super.onCreate(savedInstanceState);
+	//	setContentView(R.layout.map_view);
 		this.initMap();
 		this.initMyLocation();
 	}
+
 }
