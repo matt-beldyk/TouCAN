@@ -13,7 +13,7 @@ public class RandomInterestPoint extends InterestPoint {
 
 
 	static protected Double plusMinusRand(Double center){
-		final Double randFactor = 0.001;
+		final Double randFactor = 0.1;
 		return center + ( rand.nextGaussian() * randFactor);
 
 	}
