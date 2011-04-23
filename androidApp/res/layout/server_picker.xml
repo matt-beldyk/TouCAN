@@ -5,7 +5,7 @@
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent" android:layout_height="100dip"
-	
+
 		android:orientation="horizontal">
 
 		<EditText android:text="Server Address" android:id="@+id/serv_addr_text"
@@ -19,8 +19,8 @@
 	</LinearLayout>
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			android:layout_width="match_parent" android:layout_height="200dip"
-	
+		android:layout_width="match_parent" android:layout_height="200dip"
+
 		android:orientation="vertical">
 
 		<Button android:text="Load Layer" android:id="@+id/load_points_button"
@@ -35,5 +35,11 @@
 			android:layout_width="wrap_content" android:layout_gravity="center"
 			android:layout_height="wrap_content"></Button>
 
+
+		<Button android:text="Show Example Info Popup" android:id="@+id/info_button"
+			android:layout_width="wrap_content" android:layout_gravity="center"
+			android:layout_height="wrap_content"></Button>
+			
+			
 	</LinearLayout>
 </LinearLayout>

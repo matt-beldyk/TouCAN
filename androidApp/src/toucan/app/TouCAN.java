@@ -69,7 +69,7 @@ public class TouCAN extends MapActivity {
 
 				Log.i("", "Random Points button clicked");
 				// 20 Points around Boulder, CO
-				iPoints = new RandomLayer(20, 40.01, -105.28);
+				iPoints = new RandomLayer(40, 40.01, -105.28);
 				launchNavigationView(v);
 
 			}};
@@ -87,13 +87,25 @@ public class TouCAN extends MapActivity {
 					iPoints = new Rest2LayerAdaptor(servAddr, new Integer(servPort));
 					
 					launchNavigationView(v);
-				
 
 				}
 
 			};
 
 			((Button)findViewById(R.id.load_points_button)).setOnClickListener(restClickListener);
+
+			
+			// Listener to to popup the info window
+			OnClickListener popupClickListener = new OnClickListener(){
+				public void onClick(View v) {
+					Log.i("", "Popup button pressed");
+					setContentView(R.layout.popup);
+
+				
+				}
+			};
+			
+			((Button)findViewById(R.id.info_button)).setOnClickListener(popupClickListener);
 
 
 
