@@ -3,6 +3,7 @@ package toucan.app.map;
 import toucan.app.R;
 import toucan.app.datamodel.AbstractLayer;
 import toucan.app.datamodel.EmptyLayer;
+import toucan.app.datamodel.InterestPoint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,6 +41,17 @@ public class IPMapFoo{
 	
 	public void setMapView(MapView mv){
 		this.mapV = mv;
+	}
+	
+	public void drawPoints(){
+		for(InterestPoint p: this.points.getInterestPoints()){
+			Drawable mark = this.launcher.getResources().getDrawable(R.drawable.lmb);
+			mark.setBounds(0,0,mark.getIntrinsicWidth(),mark.getIntrinsicHeight());
+			LayerView lv = new LayerView(mark);
+			lv.setPoints(points);
+			this.mapV.getOverlays().add(lv);
+			
+		}
 	}
 	
 	protected void initMap(){

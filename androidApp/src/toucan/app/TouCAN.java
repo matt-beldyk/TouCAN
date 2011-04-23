@@ -47,7 +47,7 @@ public class TouCAN extends MapActivity {
 		//This needs to be before the call to findViewById
 		//  Basically Activity keeps track of the current layout
 		// and only looks for views and such within that layout
-		//  I suppose it avoids namespace colisions
+		//  I suppose it avoids namespace collisions
 		// and the various views aren't in the global namespace
 		setContentView(R.layout.map_view);
 
@@ -55,6 +55,7 @@ public class TouCAN extends MapActivity {
 		Log.d("", "mv:"+mv+"  R.id.ip_map:"+R.id.ip_map);
 		ipMapFoo.setMapView(mv);
 		ipMapFoo.init();
+		ipMapFoo.drawPoints();
 		
 	}
 
