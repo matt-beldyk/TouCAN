@@ -27,6 +27,11 @@ public class TouCAN extends MapActivity {
 		setUpListeners();
 
 	}
+	
+	protected void launchNavigationView(View currentContext){
+		Intent myIntent = new Intent(currentContext.getContext(), IPMapFoo.class);
+        startActivityForResult(myIntent, 0);
+	}
 
 	public void setUpListeners(){
 
@@ -38,7 +43,7 @@ public class TouCAN extends MapActivity {
 				Log.i("", "Random Points button clicked");
 				// 20 Points around Boulder, CO
 				iPoints = new RandomLayer(20, 40.001, 105.6);
-				setContentView(R.layout.map_view);
+				launchNavigationView(v);
 
 			}};
 
@@ -54,11 +59,9 @@ public class TouCAN extends MapActivity {
 					
 					iPoints = new Rest2LayerAdaptor(servAddr, new Integer(servPort));
 					
-					
-					Intent myIntent = new Intent(v.getContext(), IPMapFoo.class);
-	                startActivityForResult(myIntent, 0);
+					launchNavigationView(v);
+				
 
-				//	setContentView(R.layout.map_view);
 				}
 
 			};

@@ -1,6 +1,8 @@
 package toucan.app.map;
 
 import toucan.app.R;
+import toucan.app.datamodel.AbstractLayer;
+import toucan.app.datamodel.EmptyLayer;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,14 +17,23 @@ public class IPMapFoo extends MapActivity {
 
 	private MapView mapV;
 	private MapController controller;
+	
+	private AbstractLayer points;
 
 	@Override
 	protected boolean isRouteDisplayed() {
 		return true;
 	}
+	
+	public IPMapFoo(AbstractLayer layer){
+		super();
+		this.points = layer;
+		
+	}
+	
 	public IPMapFoo(){
 		super();
-
+		this.points = new EmptyLayer();
 	}
 	
 	protected void initMap(){
