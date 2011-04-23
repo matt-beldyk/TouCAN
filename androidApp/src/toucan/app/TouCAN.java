@@ -54,8 +54,9 @@ public class TouCAN extends MapActivity {
 		mv = (MapView)findViewById(R.id.ip_map);
 		Log.d("", "mv:"+mv+"  R.id.ip_map:"+R.id.ip_map);
 		ipMapFoo.setMapView(mv);
+		ipMapFoo.setLauncher(this);
+		ipMapFoo.setPoints(this.iPoints);
 		ipMapFoo.init();
-		ipMapFoo.drawPoints();
 		
 	}
 
@@ -68,7 +69,7 @@ public class TouCAN extends MapActivity {
 
 				Log.i("", "Random Points button clicked");
 				// 20 Points around Boulder, CO
-				iPoints = new RandomLayer(20, 40.001, 105.6);
+				iPoints = new RandomLayer(20, 40.001, -105.6);
 				launchNavigationView(v);
 
 			}};
