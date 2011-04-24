@@ -76,7 +76,7 @@ public class TouCAN extends MapActivity {
 
 				Log.i("", "Random Points button clicked");
 				// 20 Points around Boulder, CO
-				iPoints = new RandomLayer(40, 40.01, -105.28);
+				iPoints = new RandomLayer(40);
 				launchNavigationView(v);
 
 			}};

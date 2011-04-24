@@ -9,12 +9,16 @@ import toucan.app.R;
 import toucan.app.Utils;
 import toucan.app.datamodel.AbstractLayer;
 import toucan.app.datamodel.InterestPoint;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +31,7 @@ public class ipLocationListener implements android.location.LocationListener {
 	Utils utils;
 
 	private final static float CLOSE_ENOUGH_DIST = 100; //in Meters
-	
+
 	public ipLocationListener(Resources rec){
 		this.resources = rec;
 		utils = new Utils(this.resources);
@@ -59,22 +63,32 @@ public class ipLocationListener implements android.location.LocationListener {
 
 	public void locationIsCloseEnough(ipLocation l){
 		Log.d("", "YAY, I found a location that's pretty close: "+l.getLatitude()+", "+ l.getLongitude());
-		
+
 		launcher.setContentView(R.layout.popup);
 		TextView text = (TextView)launcher.findViewById(R.id.descrip);
 		text.setText(l.getDescription());
-		
+
 		Drawable pic = utils.ImageOperations(l.getPhotoUrl());
 		ImageView iv = (ImageView)launcher.findViewById(R.id.infoImage);
 		iv.setImageDrawable(pic);
 
+		OnClickListener bk2map = new OnClickListener(){
+			@Override
+			public void onClick(View arg0) {
+				launcher.setContentView(R.layout.map_view);
+			}
+
+		};
+
+		((Button)launcher.findViewById(R.id.back2mapButton)).setOnClickListener(bk2map);
+
 	}
-	
+
 	public void setLauncher(MapActivity ma){
 		this.launcher = ma;
 	}
-	
-	
+
+
 
 	@Override
 	public void onProviderDisabled(String provider) {

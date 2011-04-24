@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class RandomLayer extends AbstractLayer {
 
-	public RandomLayer(Integer count, Double centerLat, Double centerLon) {
+	public RandomLayer(Integer count) {
 		super();
 		this.points = new ArrayList<InterestPoint>();
 		for(Integer i = 0; i< count; ++i){
