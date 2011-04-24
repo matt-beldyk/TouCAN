@@ -26,6 +26,7 @@ public class TouCAN extends MapActivity {
 	private AbstractLayer iPoints;
 	private IPMapFoo ipMapFoo;
 	private MapView mv;
+	private ipLocationListener locListener;
 	
 	public TouCAN(){
 		super();
@@ -61,6 +62,8 @@ public class TouCAN extends MapActivity {
 		ipMapFoo.setLauncher(this);
 		ipMapFoo.setPoints(this.iPoints);
 		ipMapFoo.init();
+		locListener.setLocs(iPoints);
+
 		
 	}
 
@@ -112,7 +115,7 @@ public class TouCAN extends MapActivity {
 			((Button)findViewById(R.id.info_button)).setOnClickListener(popupClickListener);
 	        LocationManager locMgr = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
-			LocationListener locListener = new ipLocationListener();
+			locListener = new ipLocationListener();
 	        locMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locListener);
 
 

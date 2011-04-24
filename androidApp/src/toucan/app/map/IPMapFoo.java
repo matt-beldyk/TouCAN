@@ -80,7 +80,7 @@ public class IPMapFoo{
 			public void run() {
 				Log.d("", "First Location Found ");
 				// Zoom in to current location
-				controller.setZoom(16);
+				controller.setZoom(14);
 				controller.animateTo(overlay.getMyLocation());
 			}
 		});
