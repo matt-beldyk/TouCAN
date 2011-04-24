@@ -26,6 +26,7 @@ public class TouCAN extends MapActivity {
 	private AbstractLayer iPoints;
 	private IPMapFoo ipMapFoo;
 	private MapView mv;
+	private View popup;
 	private ipLocationListener locListener;
 	
 	public TouCAN(){
@@ -43,6 +44,12 @@ public class TouCAN extends MapActivity {
 		Log.d("", "in TouCAN.onCreate");
 
 
+	}
+	public MapView getMapView(){
+		return this.mv;
+	}
+	public View getPopupView(){
+		return this.popup;
 	}
 	
 	protected void launchNavigationView(View currentContext){
@@ -68,6 +75,7 @@ public class TouCAN extends MapActivity {
 	}
 
 	public void setUpListeners(){
+		this.popup = findViewById(R.layout.popup);
 
 
 		//  Listener to create the random test points
@@ -106,7 +114,7 @@ public class TouCAN extends MapActivity {
 			OnClickListener popupClickListener = new OnClickListener(){
 				public void onClick(View v) {
 					Log.i("", "Popup button pressed");
-					setContentView(R.layout.popup);
+					setContentView(popup);
 
 				
 				}
@@ -124,7 +132,6 @@ public class TouCAN extends MapActivity {
 
 	@Override
 	protected boolean isRouteDisplayed() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 }

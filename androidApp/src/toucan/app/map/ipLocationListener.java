@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.android.maps.MapActivity;
 
 import toucan.app.R;
+import toucan.app.TouCAN;
 import toucan.app.Utils;
 import toucan.app.datamodel.AbstractLayer;
 import toucan.app.datamodel.InterestPoint;
@@ -26,7 +27,7 @@ import android.widget.TextView;
 public class ipLocationListener implements android.location.LocationListener {
 
 	private List<ipLocation> locs;
-	private MapActivity launcher;
+	private TouCAN launcher;
 	private Resources resources;
 	Utils utils;
 
@@ -35,6 +36,7 @@ public class ipLocationListener implements android.location.LocationListener {
 	public ipLocationListener(Resources rec){
 		this.resources = rec;
 		utils = new Utils(this.resources);
+		locs = new ArrayList<ipLocation>();
 	}
 
 	public void setLocs(AbstractLayer layer){
@@ -75,7 +77,10 @@ public class ipLocationListener implements android.location.LocationListener {
 		OnClickListener bk2map = new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
-				launcher.setContentView(R.layout.map_view);
+				//launcher.getMapView().setVisibility(View.VISIBLE);
+				//launcher.getPopupView().setVisibility(View.INVISIBLE);
+			
+				launcher.setContentView(launcher.getMapView());
 			}
 
 		};
@@ -84,7 +89,7 @@ public class ipLocationListener implements android.location.LocationListener {
 
 	}
 
-	public void setLauncher(MapActivity ma){
+	public void setLauncher(TouCAN ma){
 		this.launcher = ma;
 	}
 
