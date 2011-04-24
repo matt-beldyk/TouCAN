@@ -13,6 +13,10 @@
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:layout_gravity="center"></TextView>
 
+	<Button android:text="Back to Map" android:id="@+id/back2mapButton"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="bottom"></Button>
+
 
 
 </LinearLayout>
