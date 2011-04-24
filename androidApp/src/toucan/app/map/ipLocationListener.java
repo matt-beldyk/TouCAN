@@ -6,12 +6,16 @@ import java.util.List;
 import com.google.android.maps.MapActivity;
 
 import toucan.app.R;
+import toucan.app.Utils;
 import toucan.app.datamodel.AbstractLayer;
 import toucan.app.datamodel.InterestPoint;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -19,8 +23,15 @@ public class ipLocationListener implements android.location.LocationListener {
 
 	private List<ipLocation> locs;
 	private MapActivity launcher;
+	private Resources resources;
+	Utils utils;
 
 	private final static float CLOSE_ENOUGH_DIST = 100; //in Meters
+	
+	public ipLocationListener(Resources rec){
+		this.resources = rec;
+		utils = new Utils(this.resources);
+	}
 
 	public void setLocs(AbstractLayer layer){
 		locs = new ArrayList<ipLocation>();
@@ -52,6 +63,10 @@ public class ipLocationListener implements android.location.LocationListener {
 		launcher.setContentView(R.layout.popup);
 		TextView text = (TextView)launcher.findViewById(R.id.descrip);
 		text.setText(l.getDescription());
+		
+		Drawable pic = utils.ImageOperations(l.getPhotoUrl());
+		ImageView iv = (ImageView)launcher.findViewById(R.id.infoImage);
+		iv.setImageDrawable(pic);
 
 	}
 	
