@@ -3,17 +3,22 @@ package toucan.app.map;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.maps.MapActivity;
+
+import toucan.app.R;
 import toucan.app.datamodel.AbstractLayer;
 import toucan.app.datamodel.InterestPoint;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 
 public class ipLocationListener implements android.location.LocationListener {
 
 	private List<ipLocation> locs;
+	private MapActivity launcher;
 
 	private final static float CLOSE_ENOUGH_DIST = 100; //in Meters
 
@@ -43,8 +48,18 @@ public class ipLocationListener implements android.location.LocationListener {
 
 	public void locationIsCloseEnough(ipLocation l){
 		Log.d("", "YAY, I found a location that's pretty close: "+l.getLatitude()+", "+ l.getLongitude());
+		
+		launcher.setContentView(R.layout.popup);
+		TextView text = (TextView)launcher.findViewById(R.id.descrip);
+		text.setText(l.getDescription());
 
 	}
+	
+	public void setLauncher(MapActivity ma){
+		this.launcher = ma;
+	}
+	
+	
 
 	@Override
 	public void onProviderDisabled(String provider) {

@@ -116,6 +116,7 @@ public class TouCAN extends MapActivity {
 	        LocationManager locMgr = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
 			locListener = new ipLocationListener();
+			locListener.setLauncher(this);
 	        locMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locListener);
 
 
