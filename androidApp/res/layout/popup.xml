@@ -9,7 +9,7 @@
 
 
 
-	<TextView android:text="CAFEBEEFCAFEBEEF" android:id="@+id/descrip"
+	<TextView android:text="CAFEBEEF! CAFEBEEF!" android:id="@+id/descrip"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:layout_gravity="center"></TextView>
 

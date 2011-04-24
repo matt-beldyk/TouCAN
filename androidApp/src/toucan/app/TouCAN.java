@@ -4,12 +4,16 @@ import toucan.app.datamodel.AbstractLayer;
 import toucan.app.datamodel.RandomLayer;
 import toucan.app.datamodel.Rest2LayerAdaptor;
 import toucan.app.map.IPMapFoo;
+import toucan.app.map.ipLocationListener;
 
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View.OnClickListener;
@@ -106,7 +110,10 @@ public class TouCAN extends MapActivity {
 			};
 			
 			((Button)findViewById(R.id.info_button)).setOnClickListener(popupClickListener);
+	        LocationManager locMgr = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
+			LocationListener locListener = new ipLocationListener();
+	        locMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locListener);
 
 
 	}
