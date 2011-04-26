@@ -69,6 +69,8 @@ public class ipLocationListener implements android.location.LocationListener {
 		Log.d("", "YAY, I found a location that's pretty close: "+l.getLatitude()+", "+ l.getLongitude());
 
 		Intent i = new Intent(launcher, PopupActivity.class);
+		i.putExtra("photoUrl", l.getPhotoUrl());
+		i.putExtra("desc", l.getDescription());
 		launcher.startActivity(i);
 
 		/*
