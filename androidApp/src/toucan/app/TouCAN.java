@@ -40,8 +40,8 @@ public class TouCAN extends MapActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.server_picker);
-		setUpListeners();
+		this.setContentView(R.layout.server_picker);
+		this.setUpListeners();
 		Log.d("", "in TouCAN.onCreate");
 
 
@@ -76,7 +76,6 @@ public class TouCAN extends MapActivity {
 	}
 
 	public void setUpListeners(){
-		this.popup = findViewById(R.layout.popup);
 
 
 		//  Listener to create the random test points
@@ -88,44 +87,50 @@ public class TouCAN extends MapActivity {
 				iPoints = new RandomLayer(40);
 				launchNavigationView(v);
 
-			}};
+			}
+		};
 
-			((Button)findViewById(R.id.rand_points_button)).setOnClickListener(randClickListener);
-
-
-			// Listener to create the info from the server
-			OnClickListener restClickListener = new OnClickListener(){
-				public void onClick(View v) {
-					Log.i("", "Rest Points Button clicked");
-					String servAddr = ((EditText)findViewById(R.id.serv_addr_text)).getText().toString();
-					String servPort = ((EditText)findViewById(R.id.serv_port_text)).getText().toString();
-
-					iPoints = new Rest2LayerAdaptor(servAddr, new Integer(servPort));
-
-					launchNavigationView(v);
-
-				}
-
-			};
-
-			((Button)findViewById(R.id.load_points_button)).setOnClickListener(restClickListener);
+	
+		Button randButton = (Button)findViewById(R.id.rand_points_button);
+		Log.d("", "randButton: "+randButton);
+		randButton.setOnClickListener(randClickListener);
 
 
-			// Listener to to popup the info window
-			OnClickListener popupClickListener = new OnClickListener(){
-				public void onClick(View v) {
-					Log.i("", "Popup button pressed");
-					launchPopup();
+		// Listener to create the info from the server
+		OnClickListener restClickListener = new OnClickListener(){
+			public void onClick(View v) {
+				Log.i("", "Rest Points Button clicked");
+				String servAddr = ((EditText)findViewById(R.id.serv_addr_text)).getText().toString();
+				String servPort = ((EditText)findViewById(R.id.serv_port_text)).getText().toString();
 
-				}
-			};
+				iPoints = new Rest2LayerAdaptor(servAddr, new Integer(servPort));
 
-			((Button)findViewById(R.id.info_button)).setOnClickListener(popupClickListener);
-			LocationManager locMgr = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+				launchNavigationView(v);
 
-			locListener = new ipLocationListener(this.getResources());
-			locListener.setLauncher(this);
-			locMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locListener);
+			}
+
+		};
+
+		((Button)findViewById(R.id.load_points_button)).setOnClickListener(restClickListener);
+
+
+		// Listener to to popup the info window
+		OnClickListener popupClickListener = new OnClickListener(){
+			public void onClick(View v) {
+				Log.i("", "Popup button pressed");
+				launchPopup();
+
+			}
+		};
+
+		((Button)findViewById(R.id.info_button)).setOnClickListener(popupClickListener);
+		LocationManager locMgr = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+
+		locListener = new ipLocationListener(this.getResources());
+		locListener.setLauncher(this);
+		locMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locListener);
+
+		this.popup = findViewById(R.layout.popup);
 
 
 	}
