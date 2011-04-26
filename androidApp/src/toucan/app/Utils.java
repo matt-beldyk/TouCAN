@@ -25,11 +25,10 @@ public class Utils {
 			return d;
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
-			return resources.getDrawable(R.drawable.error); //FIXME put in sane default
-
+			return resources.getDrawable(R.drawable.error); 
 		} catch (IOException e) {
 			e.printStackTrace();
-			return resources.getDrawable(R.drawable.error); //FIXME put in sane default
+			return resources.getDrawable(R.drawable.error);
 		}
 	}
 }
