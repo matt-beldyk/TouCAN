@@ -10,7 +10,9 @@ import toucan.app.TouCAN;
 import toucan.app.Utils;
 import toucan.app.datamodel.AbstractLayer;
 import toucan.app.datamodel.InterestPoint;
+import toucan.app.popup.PopupActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -66,6 +68,10 @@ public class ipLocationListener implements android.location.LocationListener {
 	public void locationIsCloseEnough(ipLocation l){
 		Log.d("", "YAY, I found a location that's pretty close: "+l.getLatitude()+", "+ l.getLongitude());
 
+		Intent i = new Intent(launcher, PopupActivity.class);
+		launcher.startActivity(i);
+
+		/*
 		launcher.setContentView(R.layout.popup);
 		TextView text = (TextView)launcher.findViewById(R.id.descrip);
 		text.setText(l.getDescription());
@@ -79,7 +85,7 @@ public class ipLocationListener implements android.location.LocationListener {
 			public void onClick(View arg0) {
 				//launcher.getMapView().setVisibility(View.VISIBLE);
 				//launcher.getPopupView().setVisibility(View.INVISIBLE);
-			
+
 				launcher.setContentView(launcher.getMapView());
 			}
 
@@ -87,6 +93,7 @@ public class ipLocationListener implements android.location.LocationListener {
 
 		((Button)launcher.findViewById(R.id.back2mapButton)).setOnClickListener(bk2map);
 
+		 */
 	}
 
 	public void setLauncher(TouCAN ma){
