@@ -5,6 +5,7 @@ import toucan.app.datamodel.RandomLayer;
 import toucan.app.datamodel.Rest2LayerAdaptor;
 import toucan.app.map.IPMapFoo;
 import toucan.app.map.ipLocationListener;
+import toucan.app.popup.PopupActivity;
 
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
@@ -28,13 +29,13 @@ public class TouCAN extends MapActivity {
 	private MapView mv;
 	private View popup;
 	private ipLocationListener locListener;
-	
+
 	public TouCAN(){
 		super();
 		ipMapFoo = new IPMapFoo();
 		ipMapFoo.setLauncher(this);
 	}
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,11 +52,11 @@ public class TouCAN extends MapActivity {
 	public View getPopupView(){
 		return this.popup;
 	}
-	
+
 	protected void launchNavigationView(View currentContext){
-	//	Intent myIntent = new Intent(currentContext.getContext(), IPMapFoo.class);
-      //  startActivityForResult(myIntent, 0);
-		
+		//	Intent myIntent = new Intent(currentContext.getContext(), IPMapFoo.class);
+		//  startActivityForResult(myIntent, 0);
+
 		//This needs to be before the call to findViewById
 		//  Basically Activity keeps track of the current layout
 		// and only looks for views and such within that layout
@@ -71,7 +72,7 @@ public class TouCAN extends MapActivity {
 		ipMapFoo.init();
 		locListener.setLocs(iPoints);
 
-		
+
 	}
 
 	public void setUpListeners(){
@@ -98,9 +99,9 @@ public class TouCAN extends MapActivity {
 					Log.i("", "Rest Points Button clicked");
 					String servAddr = ((EditText)findViewById(R.id.serv_addr_text)).getText().toString();
 					String servPort = ((EditText)findViewById(R.id.serv_port_text)).getText().toString();
-					
+
 					iPoints = new Rest2LayerAdaptor(servAddr, new Integer(servPort));
-					
+
 					launchNavigationView(v);
 
 				}
@@ -109,24 +110,31 @@ public class TouCAN extends MapActivity {
 
 			((Button)findViewById(R.id.load_points_button)).setOnClickListener(restClickListener);
 
-			
+
 			// Listener to to popup the info window
 			OnClickListener popupClickListener = new OnClickListener(){
 				public void onClick(View v) {
 					Log.i("", "Popup button pressed");
-					setContentView(popup);
+					launchPopup();
 
-				
 				}
 			};
-			
+
 			((Button)findViewById(R.id.info_button)).setOnClickListener(popupClickListener);
-	        LocationManager locMgr = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+			LocationManager locMgr = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
 			locListener = new ipLocationListener(this.getResources());
 			locListener.setLauncher(this);
-	        locMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locListener);
+			locMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locListener);
 
+
+	}
+	protected void launchPopup(){
+
+		Intent i = new Intent(this, PopupActivity.class);
+		i.putExtra("photoUrl", "");
+		i.putExtra("desc", "TExt goes here");
+		startActivity(i);
 
 	}
 
