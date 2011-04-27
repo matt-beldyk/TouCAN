@@ -104,6 +104,7 @@ public class TouCAN extends MapActivity {
 				String servPort = ((EditText)findViewById(R.id.serv_port_text)).getText().toString();
 
 				iPoints = new Rest2LayerAdaptor(servAddr, new Integer(servPort));
+				
 
 				launchNavigationView(v);
 
